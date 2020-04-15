@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="robot_model"           default="hera_full"/>
+  <arg name="map_resource"          default=""/>
+  <arg name="use_fake_localization" default="false"/>
+  <arg name="global_planner"        default="navfn/NavfnROS"/>
+  <arg name="local_planner"         default="eband_local_planner/EBandPlannerROS"/>
+
+<!-- ####################################################################### -->
+
+  <!-- load hera description -->
+  <include file="$(find hera_description)/launch/load_description.launch">
+    <arg name="robot_model" default="$(arg robot_model)"/>
+  </include>
+
+  <!-- rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" output="screen"
+    args="-d $(find hera_nav)/config/rviz/navigation.rviz"/>
+
+  <!-- load map -->
+  <node name="map_server" pkg="map_server" type="map_server" output="screen"
+    args="$(arg map_resource)/map.yaml"/>
+
+  <!-- localization -->
+  <include file="$(find hera_nav)/launch/localization.xml">
+    <arg name="use_fake_localization" default="$(arg use_fake_localization)"/>
+  </include>
+
+  <!-- start  navigation -->
+  <include file="$(find hera_nav)/launch/navigation.xml">
+    <arg name="global_planner" default="$(arg global_planner)"/>
+    <arg name="local_planner"  default="$(arg local_planner)"/>
+  </include>
+
+</launch>

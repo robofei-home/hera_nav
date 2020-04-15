@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="robot_model" default="hera_full"/>
+
+  <!-- ####################################################################### -->
+
+  <!-- load hera description -->
+  <include file="$(find hera_description)/launch/load_description.launch">
+    <arg name="robot_model" default="$(arg robot_model)"/>
+  </include>
+
+  <!-- rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" output="screen"
+    args="-d $(find hera_nav)/config/rviz/mapping.rviz" />
+
+  <!-- start slam_gmapping -->
+  <node name="gmapping" pkg="gmapping" type="slam_gmapping" output="screen"
+    args="scan:=base_scan_front _base_frame:=base"/>
+
+  <!-- keyboard teleop -->
+  <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py"
+    output="screen" launch-prefix="xterm -hold -e"/>
+
+</launch>
