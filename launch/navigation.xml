@@ -3,6 +3,8 @@
 
   <arg name="global_planner"      default="navfn/NavfnROS"/>
   <arg name="local_planner"       default="base_local_planner/TrajectoryPlannerROS"/>
+  <arg name="observation_sources" default="laser_scan_back_observation"/>
+
   <!-- <arg name="recovery_behaviors"  default="[
       {name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery},
       {name: rotate_recovery, type: rotate_recovery/RotateRecovery},
@@ -23,6 +25,10 @@
       <rosparam command="load" file="$(find hera_nav)/config/move_base/costmap_common_params.yaml" ns="local_costmap"/>
       <rosparam command="load" file="$(find hera_nav)/config/move_base/costmap_global_params.yaml"/>
       <rosparam command="load" file="$(find hera_nav)/config/move_base/costmap_local_params.yaml"/>
+
+      <param name="global_costmap/observation_sources" value="$(arg observation_sources)"/>
+      <param name="local_costmap/observation_sources" value="$(arg observation_sources)"/>
+
     </node>
 
 </launch>

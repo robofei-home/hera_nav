@@ -11,12 +11,11 @@ footprint:
     [-0.27, -0.26],
     [-0.27,  0.26] ]
 
-observation_sources: base_scan_observation_front
-# laser_scan_observation_xtion
-# base_scan_observation_back
-#
+observation_sources: laser_scan_front_observation
+# laser_scan_back_observation
+# point_cloud_front_observation
 
-base_scan_observation_front: {
+laser_scan_front_observation: {
     sensor_frame: base_scan_front,
     data_type: LaserScan,
     topic: base_scan_front,
@@ -25,7 +24,7 @@ base_scan_observation_front: {
     clearing: true,
 }
 
-base_scan_observation_back: {
+laser_scan_back_observation: {
     sensor_frame: base_scan_back,
     data_type: LaserScan,
     topic: base_scan_back,
@@ -34,7 +33,7 @@ base_scan_observation_back: {
     clearing: true,
 }
 
-laser_scan_observation_xtion: {
+point_cloud_front_observation: {
     sensor_frame: xtion_depth_optical,
     data_type: PointCloud2,
     topic: xtion/depth/points,
