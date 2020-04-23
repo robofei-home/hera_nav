@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>hera_nav</name>
-  <version>1.0.0</version>
+  <version>0.1.0</version>
   <description>
     This package is an implementation of the [Ros Navigation Stack (RNS)](http://wiki.ros.org/navigation) for the [HERA robot (2020 version)](http://robofei.aquinno.com/athome/wp-content/uploads/2020/01/TDP2020ROBOFEI.pdf).
   </description>
