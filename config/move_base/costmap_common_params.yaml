@@ -34,7 +34,7 @@ laser_scan_back_observation: {
 }
 
 point_cloud_front_observation: {
-    sensor_frame: xtion_depth_optical,
+    sensor_frame: xtion_depth,
     data_type: PointCloud2,
     topic: xtion/depth/points,
     expected_update_rate: 0.2,
