@@ -74,3 +74,8 @@ they are divided in two categories:
     * [dwa_local_planner/DWAPlannerROS](http://wiki.ros.org/dwa_local_planner)
     * [eband_local_planner/EBandPlannerROS](http://wiki.ros.org/eband_local_planner)
     * [teb_local_planner/TebLocalPlannerROS](http://wiki.ros.org/teb_local_planner)
+
+<!-- add rqt_reconfigure -->
+
+
+<!-- https://github.com/zkytony/ROSNavigationGuide/blob/master/main.pdf -->
