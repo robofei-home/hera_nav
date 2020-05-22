@@ -16,5 +16,6 @@ local_costmap:
   origin_y: 0.0                   # The y origin of the map in the global frame in meters.
 
   plugins: # Sequence of plugin specifications, one per layer. Each specification is a dictionary with name and type fields. The name is used to define the parameter namespace for the plugin.
-      - {name: obstacles,        type: "costmap_2d::VoxelLayer",     output: "screen"}
-      - {name: inflation_layer,  type: "costmap_2d::InflationLayer", output: "screen"}
+      - {name: obstacles_layer,  type: "costmap_2d::VoxelLayer",                  output: "screen"}
+      - {name: inflation_layer,  type: "costmap_2d::InflationLayer",              output: "screen"}
+      - {name: proxemic_layer,   type: "social_navigation_layers::ProxemicLayer", output: "screen"}

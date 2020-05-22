@@ -11,7 +11,7 @@ footprint_padding: 0.05
 #     - {name: inflation_layer,  type: "costmap_2d::InflationLayer", output: "screen"}
 
 
-# static_map:
+# static_layer:
 #   enabled: true
 #   map_topic: "/map" # The topic that the costmap subscribes to for the static map. This parameter is useful when you have multiple costmap instances within a single node that you want to use different static maps. - New in navigation 1.3.1
 #   unknown_cost_value: -1 # The value for which a cost should be considered unknown when reading in a map from the map server. If the costmap is not tracking unknown space, costs of this value will be considered occupied. A value of zero also results in this parameter being unused.
@@ -23,7 +23,7 @@ footprint_padding: 0.05
 #   trinary_costmap: true # If true, translates all map message values to NO_INFORMATION/FREE_SPACE/LETHAL_OBSTACLE (three values). If false, a full spectrum of intermediate values is possible.
 
 
-obstacles:
+obstacles_layer:
   # enabled: true
   # Sensor management parameters #
 
@@ -112,3 +112,11 @@ inflation_layer:
   # enabled: true
   inflation_radius: 1.0    # The radius in meters to which the map inflates obstacle cost values.
   cost_scaling_factor: 10.0 # A scaling factor to apply to cost values during inflation.
+
+proxemic_layer:
+  enabled: true     # Whether to apply this plugin or not
+  cutoff: 10.0      # Smallest value to publish on costmap adjustments
+  amplitude: 77.0   # Amplitude of adjustments at peak
+  covariance: 0.25  # Covariance of adjustments
+  factor: 5.0       # Factor with which to scale the velocity
+  keep_time: 0.75   # Pause before clearing leg list

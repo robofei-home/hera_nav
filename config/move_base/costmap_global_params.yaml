@@ -6,16 +6,17 @@ global_costmap:
 
   transform_tolerance: 0.2        # Specifies the delay in transform (tf) data that is tolerable in seconds.
   update_frequency: 5.0           # The frequency in Hz for the map to be updated.
-  publish_frequency: 5.0         # The frequency in Hz for the map to be publish display information.
-  always_send_full_costmap: true # If true the full costmap is published to "~<name>/costmap" every update. If false only the part of the costmap that has changed is published on the "~<name>/costmap_updates" topic.
+  publish_frequency: 5.0          # The frequency in Hz for the map to be publish display information.
+  always_send_full_costmap: true  # If true the full costmap is published to "~<name>/costmap" every update. If false only the part of the costmap that has changed is published on the "~<name>/costmap_updates" topic.
 
   width: 15                       # The width of the map in meters.
   height: 15                      # The height of the map in meters.
-  resolution: 0.025                # The resolution of the map in meters/cell.
+  resolution: 0.025               # The resolution of the map in meters/cell.
   origin_x: 0.0                   # The x origin of the map in the global frame in meters.
   origin_y: 0.0                   # The y origin of the map in the global frame in meters.
 
   plugins: # Sequence of plugin specifications, one per layer. Each specification is a dictionary with name and type fields. The name is used to define the parameter namespace for the plugin.
-      - {name: static_map,       type: "costmap_2d::StaticLayer",    output: "screen"}
-      - {name: obstacles,        type: "costmap_2d::VoxelLayer",     output: "screen"}
-      - {name: inflation_layer,  type: "costmap_2d::InflationLayer", output: "screen"}
+      - {name: static_layer,     type: "costmap_2d::StaticLayer",                 output: "screen"}
+      - {name: obstacles_layer,  type: "costmap_2d::VoxelLayer",                  output: "screen"}
+      - {name: inflation_layer,  type: "costmap_2d::InflationLayer",              output: "screen"}
+      - {name: proxemic_layer,   type: "social_navigation_layers::ProxemicLayer", output: "screen"}
