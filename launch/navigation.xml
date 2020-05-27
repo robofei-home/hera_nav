@@ -7,18 +7,13 @@
   <arg name="xy_goal_tolerance"   default="0.1"/>
   <arg name="yaw_goal_tolerance"  default="0.05"/>
 
-  <!-- <arg name="recovery_behaviors"  default="[
-      {name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery},
-      {name: rotate_recovery, type: rotate_recovery/RotateRecovery},
-      {name: aggressive_reset, type: clear_costmap_recovery/ClearCostmapRecovery}]"/> -->
-
     <node name="move_base" pkg="move_base" type="move_base"
       respawn="true" output="screen">
 
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/move_base_params.yaml"/>
       <param name="base_global_planner" value="$(arg global_planner)"/>
       <param name="base_local_planner" value="$(arg local_planner)"/>
-      <!-- <rosparam param="recovery_behaviors"> $(arg recovery_behaviors) </rosparam> -->
-      <rosparam command="load" file="$(find hera_nav)/config/navigation/move_base_params.yaml"/>
+
       <rosparam command="load" file="$(find hera_nav)/config/navigation/costmap_common_params.yaml" ns="global_costmap"/>
       <rosparam command="load" file="$(find hera_nav)/config/navigation/costmap_common_params.yaml" ns="local_costmap"/>
       <rosparam command="load" file="$(find hera_nav)/config/navigation/costmap_global_params.yaml"/>
@@ -28,7 +23,6 @@
       <param name="local_costmap/obstacles_layer/observation_sources"  value="$(arg observation_sources)"/>
 
       <rosparam command="load" file="$(find hera_nav)/config/navigation/global_planner_params.yaml"/>
-
       <rosparam command="load" file="$(find hera_nav)/config/navigation/local_planner_base_params.yaml"/>
       <rosparam command="load" file="$(find hera_nav)/config/navigation/local_planner_dwa_params.yaml"/>
       <rosparam command="load" file="$(find hera_nav)/config/navigation/local_planner_eband_params.yaml"/>
