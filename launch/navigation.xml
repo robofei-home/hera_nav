@@ -18,21 +18,21 @@
       <param name="base_global_planner" value="$(arg global_planner)"/>
       <param name="base_local_planner" value="$(arg local_planner)"/>
       <!-- <rosparam param="recovery_behaviors"> $(arg recovery_behaviors) </rosparam> -->
-      <rosparam command="load" file="$(find hera_nav)/config/move_base/move_base_params.yaml"/>
-      <rosparam command="load" file="$(find hera_nav)/config/move_base/costmap_common_params.yaml" ns="global_costmap"/>
-      <rosparam command="load" file="$(find hera_nav)/config/move_base/costmap_common_params.yaml" ns="local_costmap"/>
-      <rosparam command="load" file="$(find hera_nav)/config/move_base/costmap_global_params.yaml"/>
-      <rosparam command="load" file="$(find hera_nav)/config/move_base/costmap_local_params.yaml"/>
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/move_base_params.yaml"/>
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/costmap_common_params.yaml" ns="global_costmap"/>
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/costmap_common_params.yaml" ns="local_costmap"/>
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/costmap_global_params.yaml"/>
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/costmap_local_params.yaml"/>
 
       <param name="global_costmap/obstacles_layer/observation_sources" value="$(arg observation_sources)"/>
       <param name="local_costmap/obstacles_layer/observation_sources"  value="$(arg observation_sources)"/>
 
-      <rosparam command="load" file="$(find hera_nav)/config/move_base/global_planner_params.yaml"/>
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/global_planner_params.yaml"/>
 
-      <rosparam command="load" file="$(find hera_nav)/config/move_base/local_planner_base_params.yaml"/>
-      <rosparam command="load" file="$(find hera_nav)/config/move_base/local_planner_dwa_params.yaml"/>
-      <rosparam command="load" file="$(find hera_nav)/config/move_base/local_planner_eband_params.yaml"/>
-      <rosparam command="load" file="$(find hera_nav)/config/move_base/local_planner_teb_params.yaml"/>
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/local_planner_base_params.yaml"/>
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/local_planner_dwa_params.yaml"/>
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/local_planner_eband_params.yaml"/>
+      <rosparam command="load" file="$(find hera_nav)/config/navigation/local_planner_teb_params.yaml"/>
 
       <param name="TrajectoryPlannerROS/xy_goal_tolerance"  value="$(arg xy_goal_tolerance)"/>
       <param name="DWAPlannerROS/xy_goal_tolerance"         value="$(arg xy_goal_tolerance)"/>
