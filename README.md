@@ -3,6 +3,11 @@
 This package is an implementation of the [Ros Navigation Stack (RNS)](http://wiki.ros.org/navigation) for the [HERA robot (2020 version)](http://robofei.aquinno.com/athome/wp-content/uploads/2020/01/TDP2020ROBOFEI.pdf).
 The [RNS]((http://wiki.ros.org/navigation)) is a set of packages from [ROS](https://www.ros.org/) specialized in navigating a mobile base. It uses information from [odometry](https://en.wikipedia.org/wiki/Odometry) and distance sensors ([laser scanning](https://en.wikipedia.org/wiki/Laser_scanning) and [point cloud](https://en.wikipedia.org/wiki/Point_cloud)) to generate speed commands sent to the robot.
 
+<figure align="center">
+<img src="doc/overview_tf.png" width="500">
+<p>Navigation Stack Setup.</p>
+</figure>
+
 ## Dependencies:
 * [ROS](https://www.ros.org/) (Melodic Morenia)
   * [roslaunch](http://wiki.ros.org/roslaunch)
@@ -22,17 +27,18 @@ The [RNS]((http://wiki.ros.org/navigation)) is a set of packages from [ROS](http
     * [dwa_local_planner](http://wiki.ros.org/dwa_local_planner)
     * [eband_local_planner](http://wiki.ros.org/eband_local_planner)
     * [teb_local_planner](http://wiki.ros.org/teb_local_planner)
-    * [clear_costmap_recovery](http://wiki.ros.org/clear_costmap_recovery)
-    * [rotate_recovery](http://wiki.ros.org/rotate_recovery)
-    * [move_slow_and_clear](http://wiki.ros.org/move_slow_and_clear)
+    <!-- * [clear_costmap_recovery](http://wiki.ros.org/clear_costmap_recovery) -->
+    <!-- * [rotate_recovery](http://wiki.ros.org/rotate_recovery) -->
+    <!-- * [move_slow_and_clear](http://wiki.ros.org/move_slow_and_clear) -->
 * [hera_description](https://gitlab.com/fpimentel/hera/hera_description)
 
 ### Configuration:
 There are a folder called ```config```, that contains parameters used to visualize and configure the robot navigation.
 ```
   |-- config
-    |-- amcl
+    |-- localization
       |-- amcl.yaml
+      |-- fl.yaml
     |-- move_base
       |--move_base_params.yaml
       |--costmap_common_params.yaml
@@ -46,6 +52,30 @@ There are a folder called ```config```, that contains parameters used to visuali
       |-- mapping.rviz
       |-- navigation.rviz
 ```
+
+The parameters were set and optimized following the [Navigation tutorials](http://wiki.ros.org/navigation/Tutorials), [Configuring Layered Costmaps tutorial
+](http://wiki.ros.org/costmap_2d/Tutorials/Configuring%20Layered%20Costmaps), [teb_local_planner tutorials](http://wiki.ros.org/teb_local_planner/Tutorials) and [ROS Navigation Tuning Guide](https://github.com/zkytony/ROSNavigationGuide/blob/master/main.pdf).
+
+
+
+<!-- #### Localization optimization
+For localization propose, two modules can be used, the first one is the [amcl package](http://wiki.ros.org/amcl) that implements [Adaptive (or KLD-sampling) Monte Carlo Localization approach by Dieter Fox *et al.*](https://www.aaai.org/Papers/AAAI/1999/AAAI99-050.pdf) and the [fake_localization package](http://wiki.ros.org/fake_localization) used during simulation as a method to provide perfect localization in a computationally inexpensive manner.
+Both packages was used with default parameters without any kind of optimization.
+
+#### Navigation optimization
+
+##### move_base
+Tree parameters was modified from default:
+* **controller_frequency**: from ```20.0``` to ```5.0``` (The rate in Hz at which to run the control loop and send velocity commands to the base.)
+* **recovery_behavior_enabled**: from ```true``` to ```false``` (Whether or not to enable the move_base recovery behaviors to attempt to clear out space.)
+* **planner_frequency**: from ```0.0``` to ```1.0``` (The rate in Hz at which to run the global planning loop. If the frequency is set to 0.0, the global planner will only run when a new goal is received or the local planner reports that its path is blocked.)
+
+##### recovery_behaviors
+Since the parameter **recovery_behavior_enabled** is setted to ```false```, any optimization is needed in this topic.
+
+##### costmaps
+##### global_planners
+##### local_planner -->
 
 ### Launch:
 There are a folder called ```launch```, that contains files used to launch the robot using [roslaunch](http://wiki.ros.org/roslaunch) in the [ROS ecosystem](https://www.ros.org/core-components/).
@@ -163,3 +193,8 @@ This interface for gazebo:
 <img src="doc/gazebo_navigation.png" width="250">
 <p>Gazebo interface.</p>
 </figure>
+
+
+<!-- http://www.willowgarage.com/sites/default/files/icra2010_marder-eppstein.pdf -->
+
+<!-- https://estudogeral.uc.pt/handle/10316/87917 -->
