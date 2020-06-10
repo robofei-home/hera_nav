@@ -2,6 +2,9 @@
 <launch>
 
   <arg name="robot_model"           default="hera_full"/>
+  <arg name="init_pos_x" 	          default="0.0"/>
+  <arg name="init_pos_y" 	          default="0.0"/>
+  <arg name="init_yaw"   	          default="0.0"/>
   <arg name="map_resource"          default=""/>
   <arg name="use_fake_localization" default="false"/>
   <arg name="global_planner"        default="navfn/NavfnROS"/>
@@ -17,6 +20,9 @@
   <!-- load hera description -->
   <include file="$(find hera_description)/launch/load_description.launch">
     <arg name="robot_model" default="$(arg robot_model)"/>
+    <arg name="init_pos_x" 	default="$(arg init_pos_x)"/>
+    <arg name="init_pos_y" 	default="$(arg init_pos_y)"/>
+    <arg name="init_yaw"   	default="$(arg init_yaw)"/>
   </include>
 
   <!-- rviz -->
