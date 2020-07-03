@@ -6,7 +6,7 @@
   <arg name="init_pos_y" 	          default="0.0"/>
   <arg name="init_yaw"   	          default="0.0"/>
   <arg name="map_resource"          default=""/>
-  <arg name="use_fake_localization" default="false"/>
+  <arg name="use_amcl"              default="true"/>
   <arg name="global_planner"        default="navfn/NavfnROS"/>
   <arg name="local_planner"         default="eband_local_planner/EBandPlannerROS"/>
   <arg name="global_layers"         default="[ {name: static_layer, type: 'costmap_2d::StaticLayer'}, {name: obstacles_layer, type: 'costmap_2d::VoxelLayer'}, {name: inflation_layer, type: 'costmap_2d::InflationLayer'}]" />
@@ -35,7 +35,7 @@
 
   <!-- localization -->
   <include file="$(find hera_nav)/launch/localization.xml">
-    <arg name="use_fake_localization" default="$(arg use_fake_localization)"/>
+    <arg name="use_amcl" default="$(arg use_amcl)"/>
   </include>
 
   <!-- start  navigation -->

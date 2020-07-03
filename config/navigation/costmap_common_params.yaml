@@ -93,8 +93,8 @@ inflation_layer:
 
 proxemic_layer:
   enabled: true     # Whether to apply this plugin or not
-  cutoff: 10.0      # Smallest value to publish on costmap adjustments
-  amplitude: 77.0   # Amplitude of adjustments at peak
-  covariance: 0.25  # Covariance of adjustments
-  factor: 5.0       # Factor with which to scale the velocity
+  cutoff: 100 # 10.0      # Smallest value to publish on costmap adjustments
+  amplitude: 200 # 77.0   # Amplitude of adjustments at peak
+  covariance: 1 # 0.25  # Covariance of adjustments
+  factor: 10 # 5.0       # Factor with which to scale the velocity
   keep_time: 0.75   # Pause before clearing leg list
