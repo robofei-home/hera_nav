@@ -14,8 +14,8 @@ TebLocalPlannerROS:
 
   # The following parameters are relevant only for holonomic robots: New in ROS kinetic
   # Note, reduce ~<name>/weight_kinematics_nh significantly in order to adjust the tradeoff between usual driving and strafing.
-  max_vel_y: 0.0 # 0.0 # Maximum strafing velocity of the robot (should be zero for non-holonomic robots!)
-  acc_lim_y: 0.5 # 0.5 # Maximum strafing acceleration of the robot
+  max_vel_y: 0.3 # 0.0 # Maximum strafing velocity of the robot (should be zero for non-holonomic robots!)
+  acc_lim_y: 0.2 # 0.5 # Maximum strafing acceleration of the robot
 
   # The following parameters are relevant for the footprint model used for optimization (see Tutorial Obstacle Avoidance and Robot Footprint Model). New in version 0.3
   footprint_model/type: "point" # "point" # Specify the robot footprint model type used for optimization. Different types are "point", "circular", "line", "two_circles" and "polygon." The type of the model significantly influences the required computation time.
@@ -43,7 +43,7 @@ TebLocalPlannerROS:
   dt_hysteresis: 0.1 # Hysteresis for automatic resizing depending on the current temporal resolution, usually approx. 10% of dt_ref is recommended
   min_samples: 3 # Minimum number of samples (should be always greater than 2)
   # min_samples: 500 # Maxmimum number of samples
-  global_plan_overwrite_orientation: false # Overwrite orientation of local subgoals provided by the global planner (since they often provide only a 2D path)
+  global_plan_overwrite_orientation: true # Overwrite orientation of local subgoals provided by the global planner (since they often provide only a 2D path)
   max_global_plan_lookahead_dist: 2.5 # Specify the maximum length (cumulative Euclidean distances) of the subset of the global plan taken into account for optimization. The actual length is than determined by the logical conjunction of the local costmap size and this maximum bound. Set to zero or negative in order to deactivate this limitation.
 #   force_reinit_new_goal_dist: 1.0 # Reinitialize the trajectory if a previous goal is updated with a separation of more than the specified value in meters (skip hot-starting)
   feasibility_check_no_poses: 5 # Specify up to which pose on the predicted plan the feasibility should be checked each sampling interval.
@@ -52,7 +52,7 @@ TebLocalPlannerROS:
   allow_init_with_backwards_motion: false # If true, underlying trajectories might be initialized with backwards motions in case the goal is behind the start within the local costmap (this is only recommended if the robot is equipped with rear sensors).
   exact_arc_length: false # If true, the planner uses the exact arc length in velocity, acceleration and turning rate computations (-> increased cpu time), otherwise the Euclidean approximation is used.
   shrink_horizon_min_duration: 10.0 # Specify minimum duration for the reduced horizon in case an infeasible trajectory is detected (refer to parameter shrink_horizon_backup in order to activate the reduced horizon mode).
-  global_plan_viapoint_sep: 2.0
+  global_plan_viapoint_sep: 0.5
   global_plan_prune_distance: 1
   oscillation_recovery: true
   oscillation_v_eps: 0.1
@@ -98,7 +98,7 @@ TebLocalPlannerROS:
   weight_max_vel_theta: 1.0 # Optimization weight for satisfying the maximum allowed angular velocity
   weight_acc_lim_x: 1.0 # Optimization weight for satisfying the maximum allowed translational acceleration
   weight_acc_lim_theta: 1.0 # Optimization weight for satisfying the maximum allowed angular acceleration
-  weight_kinematics_nh: 1000.0 # Optimization weight for satisfying the non-holonomic kinematics (this parameter must be high since the kinematics equation constitutes an equality constraint, even a value of 1000 does not imply a bad matrix condition due to small 'raw' cost values in comparison to other costs).
+  weight_kinematics_nh: 100.0 # Optimization weight for satisfying the non-holonomic kinematics (this parameter must be high since the kinematics equation constitutes an equality constraint, even a value of 1000 does not imply a bad matrix condition due to small 'raw' cost values in comparison to other costs).
   weight_kinematics_forward_drive: 1.0 # Optimization weight for forcing the robot to choose only forward directions (positive transl. velocities). A small weight (e.g. 1.0) still allows driving backwards.
   weight_kinematics_turning_radius: 1.0 # Optimization weight for enforcing a minimum turning radius (only for carlike robots).
   weight_shortest_path: 0
