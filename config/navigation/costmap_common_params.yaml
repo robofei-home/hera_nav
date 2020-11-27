@@ -88,13 +88,26 @@ obstacles_layer:
 
 inflation_layer:
   enabled: true             # Whether to apply this plugin or not
-  inflation_radius: 1.0     # The radius in meters to which the map inflates obstacle cost values.
+  inflation_radius: 0.5     # The radius in meters to which the map inflates obstacle cost values.
   cost_scaling_factor: 10.0 # A scaling factor to apply to cost values during inflation.
 
-proxemic_layer:
-  enabled: true     # Whether to apply this plugin or not
-  cutoff: 80 # 10.0      # Smallest value to publish on costmap adjustments
-  amplitude: 254 # 77.0   # Amplitude of adjustments at peak
-  covariance: 1 # 0.25  # Covariance of adjustments
-  factor: 10 # 5.0       # Factor with which to scale the velocity
-  keep_time: 0.75   # Pause before clearing leg list
+people_layer:
+  enabled: true              # Whether to apply this plugin or not
+  topic: /points_people      # topic with points
+  cutoff: 80 # 10.0          # Smallest value to publish on costmap adjustments
+  amplitude: 254 # 77.0      # Amplitude of adjustments at peak
+  covariance: 1 # 0.25       # Covariance of adjustments
+
+object_layer:
+  enabled: true              # Whether to apply this plugin or not
+  topic: /points_objects     # topic with points
+  cutoff: 80 # 10.0          # Smallest value to publish on costmap adjustments
+  amplitude: 150 # 77.0      # Amplitude of adjustments at peak
+  covariance: 1 # 0.25       # Covariance of adjustments
+
+interaction_layer:
+  enabled: true              # Whether to apply this plugin or not
+  topic: /points_interaction # topic with points
+  cutoff: 80 # 10.0          # Smallest value to publish on costmap adjustments
+  amplitude: 254 # 77.0      # Amplitude of adjustments at peak
+  covariance: 1 # 0.25       # Covariance of adjustments
