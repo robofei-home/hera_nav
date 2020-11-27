@@ -1,6 +1,6 @@
 # hera_nav
 
-This package is an implementation of the [Ros Navigation Stack (RNS)](http://wiki.ros.org/navigation) for the [HERA robot (2020 version)](http://robofei.aquinno.com/athome/wp-content/uploads/2020/01/TDP2020ROBOFEI.pdf).
+This package is an implementation of the [Ros Navigation Stack (RNS)](http://wiki.ros.org/navigation) for the [HERA (2020 version)](http://robofei.aquinno.com/athome/wp-content/uploads/2020/01/TDP2020ROBOFEI.pdf).
 The [RNS]((http://wiki.ros.org/navigation)) is a set of packages from [ROS](https://www.ros.org/) specialized in navigating a mobile base. It uses information from [odometry](https://en.wikipedia.org/wiki/Odometry) and distance sensors ([laser scanning](https://en.wikipedia.org/wiki/Laser_scanning) and [point cloud](https://en.wikipedia.org/wiki/Point_cloud)) to generate speed commands sent to the robot.
 
 <figure align="center">
@@ -30,7 +30,7 @@ The [RNS]((http://wiki.ros.org/navigation)) is a set of packages from [ROS](http
     <!-- * [clear_costmap_recovery](http://wiki.ros.org/clear_costmap_recovery) -->
     <!-- * [rotate_recovery](http://wiki.ros.org/rotate_recovery) -->
     <!-- * [move_slow_and_clear](http://wiki.ros.org/move_slow_and_clear) -->
-* [hera_description](https://gitlab.com/fpimentel/hera/hera_description)
+* [hera_description](https://github.com/Home-Environment-Robot-Assistant/hera_description)
 
 ### Configuration:
 There are a folder called ```config```, that contains parameters used to visualize and configure the robot navigation.
@@ -90,9 +90,9 @@ The files in this folder are divided in two extensions:
     |--bringup_navigation.launch
 ```
 * **bringup_mapping**: Used to start the mapping process of a new environment. Parameters:
-  * **robot_model**: (string, default: hera_full) - Robot used. Available in the [hera_description](https://gitlab.com/fpimentel/hera/hera_description) package.
+  * **robot_model**: (string, default: hera_full) - Robot used. Available in the [hera_description](https://github.com/Home-Environment-Robot-Assistant/hera_description) package.
 * **bringup_navigation**: Used to start the navigation process. Parameters:
-  * **robot_model**: (string, default: hera_full) - Robot used. Available in the [hera_description](https://gitlab.com/fpimentel/hera/hera_description) package.
+  * **robot_model**: (string, default: hera_full) - Robot used. Available in the [hera_description](https://github.com/Home-Environment-Robot-Assistant/hera_description) package.
   * **map_resource**: (string, default: ) - Path to map folder used to navigation. This folder must contain a _pgm_ and a _yaml_ files.
   * **use_fake_localization**: (boolean, default: false) - Used in simulated environment if you want an accurate localization.
     * **true** - Use [fake_localization](http://wiki.ros.org/fake_localization) package.
@@ -117,10 +117,10 @@ mkdir src
 4. Git clone this repository and install all dependencies.
 ```bash
 cd src
-git clone https://gitlab.com/fpimentel/hera/hera_nav.git
+git clone https://github.com/Home-Environment-Robot-Assistant/hera_nav.git
 sudo ./hera_description/install_dependencies.sh
 ```
-5. Install [hera_description](https://gitlab.com/fpimentel/hera/hera_description).
+5. Install [hera_description](https://github.com/Home-Environment-Robot-Assistant/hera_description).
 6. Compile you catkin workspace.
 ```bash
 cd <catkin_workspace>/
